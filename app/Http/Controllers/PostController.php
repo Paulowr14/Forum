@@ -14,9 +14,10 @@ class PostController extends Controller{
         return view('post.index',["posts"=>$this->post->all()]);
     }
     
-    public function show(){
+    public function show(Post $post){
         return view('post.show',["posts"=>$this->post->all()]);
     }
+    
     
     public function create() {
         return view('post.create');
@@ -26,7 +27,7 @@ class PostController extends Controller{
         return view();
     }
 
-    public function Edit() {
+    public function edit() {
         return view();
     }
 
