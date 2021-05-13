@@ -25,6 +25,10 @@ Route::get('/dashboard', function () {
 Route::get('/post',[PostController::class,"index"])->middleware(['auth']);
 Route::get('/post/create',[PostController::class,"create"])->middleware(['auth']);
 Route::get('/post/{post}',[PostController::class,"show"])->middleware(['auth']);
+Route::post('/post/{post}',[PostController::class,"store"])->middleware(['auth']);
+Route::get('/posts/{post}/edit',[PostController::class,"edit"])->middleware(['auth']);
+Route::put('/posts/{post}',[PostController::class,"update"])->middleware(['auth']);
+Route::delete('/post/{post}',[PostController::class,"destroy"])->middleware(['auth']);
 
 
 

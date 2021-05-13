@@ -15,7 +15,7 @@ class PostController extends Controller{
     }
     
     public function show(Post $post){
-        return view('post.show',["posts"=>$this->post->all()]);
+         return view('post.show',["post"=>$post]);
     }
     
     
@@ -23,19 +23,32 @@ class PostController extends Controller{
         return view('post.create');
     }
 
-    public function store() {
-        return view();
+    public function store(Post $post) {       
+        $namepost = $post->namepost;
+        $post = new Post();
+        $post->title = $namepost;
+        var_dump($post->save());
+
     }
 
-    public function edit() {
-        return view();
+        
+   
+
+    public function edit(Post $post) {
+        return view('post.edit',["post"=>$post]);
     }
 
     public function update() {
-        return view();
+        session()->flash('Message', "The post was successfully updated");   
+
+        return redirect()->action([PostController::class, 'index']);
     }
 
-    public function destroy() {
-        return view();
+    public function destroy(Post $post) {
+        $post->delete();
+        session()->flash('Message', "The post was successfully deleted");   
+
+        return redirect()->action([PostController::class, 'index']);
+
     }
 }

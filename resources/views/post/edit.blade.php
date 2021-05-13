@@ -7,26 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
-
+<h1>Teste</h1>
 </head>
 <body>
-
-<div class="container">
-
-<div class="jumbotron">
-        <h1>Create your Post</h1>
-</div>
-<form method="post" action="/post/create">
-    @csrf
-    <div class="form-group">
-            <label for="namepost">Enter your post name </label>
-            <input type="text" class="form-control" name="namepost" id="namepost">
-
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        
-</div>
-</form>
-
+ 
+ 
 </body>
 </html>
