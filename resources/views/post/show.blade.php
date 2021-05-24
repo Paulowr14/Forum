@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h1 class="text-center text-3xl uppercase font-black my-4">Post's Detail: {{ $post->title }}</h1>
 
-</head>
+    <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12 mx-auto">
+        <ul>
+            <li><strong>Title: </strong>{{ $post->title }}</li>
+            <li><strong>Content: </strong>{{ $post->content }}</li>
+           
+        </ul>
 
-</head>
-<body>
- 
- 
-</body>
-</html>
+        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="DELETE">
+            
+            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-900 hover:shadow-none">Delete Post: {{ $post->title }}</button>
+            
+        </form>
+        <a href="{{ route('posts.index') }}" button type="navigation"class="btn btn-primary">Back</button>
+    </div>

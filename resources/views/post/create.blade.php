@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+@extends('post.layout.app')
 
-</head>
+<h1 class="text-center text-3xl uppercase font-black my-4">Register a new Post</h1>
 
-</head>
-<body>
+@if($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li> {{ $error }} </li>
+        @endforeach
+    </ul>
 
-<div class="container">
+@endif
 
-<div class="jumbotron">
-        <h1>Create your Post</h1>
-</div>
-<form method="post" action="/post/create">
-    @csrf
-    <div class="form-group">
-            <label for="namepost">Enter your post name </label>
-            <input type="text" class="form-control" name="namepost" id="namepost">
+<div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12 mx-auto">
+    <form action="{{ route('posts.store') }}" method="post">
+        @csrf
 
-        </div>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Insert your title" value = "{{ old('title') }}">
+        <textarea class="form-control" name="content" id="content" rows="3" placeholder="Insert your content">{{ old('content') }}</textarea>
         <button type="submit" class="btn btn-primary">Save</button>
-        
-</div>
-</form>
+        <button type="navigation"class="btn btn-primary w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-900 hover:shadow-none"">Back</button>
 
-</body>
-</html>
+    </form>
+</div>

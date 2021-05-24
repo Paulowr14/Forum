@@ -22,13 +22,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/post',[PostController::class,"index"])->middleware(['auth']);
-Route::get('/post/create',[PostController::class,"create"])->middleware(['auth']);
-Route::get('/post/{post}',[PostController::class,"show"])->middleware(['auth']);
-Route::post('/post/{post}',[PostController::class,"store"])->middleware(['auth']);
-Route::get('/posts/{post}/edit',[PostController::class,"edit"])->middleware(['auth']);
-Route::put('/posts/{post}',[PostController::class,"update"])->middleware(['auth']);
-Route::delete('/post/{post}',[PostController::class,"destroy"])->middleware(['auth']);
+Route::get('/posts',[PostController::class,"index"])->middleware(['auth'])->name('posts.index');
+Route::get('/posts/create',[PostController::class,"create"])->middleware(['auth'])->name('posts.create');
+Route::get('/posts/{post}',[PostController::class,"show"])->middleware(['auth'])->name('posts.show');
+Route::post('/posts/store',[PostController::class,"store"])->middleware(['auth'])->name('posts.store');
+Route::get('/posts/{post}/edit',[PostController::class,"edit"])->middleware(['auth'])->name('posts.edit');
+Route::put('/posts/{post}',[PostController::class,"update"])->middleware(['auth'])->name('posts.update');
+Route::delete('/posts/{post}',[PostController::class,"destroy"])->middleware(['auth'])->name('posts.destroy');
 
 
 

@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+@extends('post.layout.app')
 
-</head>
-<h1>Teste</h1>
-</head>
-<body>
- 
- 
-</body>
-</html>
+<h1 class="text-center text-3xl uppercase font-black my-4">Edit Post</h1>
+
+@if($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li> {{ $error }} </li>
+        @endforeach
+    </ul>
+
+@endif
+
+<div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12 mx-auto">
+    <form action="{{ route('posts.update', $post ->id) }}" method="post">
+        @csrf
+        @method('PUT')
+        <input type="text" class="form-control" name="title" id="title" placeholder="Insert your title" value = "{{$post->title }}">
+        <textarea class="form-control" name="content" id="content" rows="3" placeholder="Insert your content">{{$post->content}}</textarea>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ route('posts.index') }}" button type="navigation"class="btn btn-primary">Back</button> </a>
+
+    </form>
+</div>
